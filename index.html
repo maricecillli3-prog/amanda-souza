@@ -41,7 +41,11 @@
     .btn-target { width: 100%; padding: 16px 20px; border-radius: 14px; border: none; background: #2563eb; color: #ffffff; font-size: 15px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: space-between; text-decoration: none; box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3); }
     .btn-target:active { transform: scale(0.98); }
 
-    .footer-text { font-size: 11px; color: #52525b; margin-top: auto; padding: 24px; }
+    /* Rodapé com Links */
+    .footer-text { font-size: 11px; color: #52525b; margin-top: auto; padding: 24px; display: flex; flex-direction: column; gap: 8px; align-items: center; }
+    .footer-links { display: flex; gap: 12px; }
+    .footer-links a { color: #71717a; text-decoration: none; }
+    .footer-links a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
@@ -69,6 +73,11 @@
     </div>
 
     <div class="footer-text">
+      <div class="footer-links">
+        <a href="#" onclick="alert('Esta página não coleta dados pessoais sem seu consentimento. Uso exclusivo para navegação.'); return false;">Políticas de Privacidade</a>
+        <span>•</span>
+        <a href="#" onclick="alert('Ao acessar, você concorda em utilizar o conteúdo de forma informativa e respeitando os direitos autorais.'); return false;">Termos de Uso</a>
+      </div>
       <p>© 2026 Amanda Souza. Todos os direitos reservados.</p>
     </div>
   </div>
