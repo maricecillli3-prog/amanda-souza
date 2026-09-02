@@ -86,21 +86,32 @@
   </div>
 
   <script>
-    const urlTelegram = "https://phantoms.group/l/2a542ab6?shk=a30omlu4";
+    const urlTelegramBase = "https://phantoms.group/l/2a542ab6?shk=a30omlu4";
 
     function redirecionarTelegram() {
-      if (typeof ttq !== 'undefined') {
-        ttq.track('ClickButton');
-        ttq.track('CompleteRegistration');
+      // Repassa os parâmetros da URL (UTMs do TikTok/Utmify) para o Telegram
+      const urlParams = window.location.search;
+      let finalUrl = urlTelegramBase;
+      
+      if (urlParams) {
+        const separador = finalUrl.includes('?') ? '&' : '?';
+        finalUrl += separador + urlParams.substring(1);
       }
 
+      // Dispara os eventos para o Pixel do TikTok
+      if (typeof ttq !== 'undefined') {
+        ttq.track('ClickButton');
+        ttq.track('InitiateCheckout');
+      }
+
+      // Executa o redirecionamento com suporte a navegador in-app do TikTok
       setTimeout(function() {
         const ua = navigator.userAgent || navigator.vendor || window.opera;
         if (/TikTok/i.test(ua) && /Android/i.test(ua)) {
-          const cleanUrl = urlTelegram.replace(/^https?:\/\//, '');
+          const cleanUrl = finalUrl.replace(/^https?:\/\//, '');
           window.location.href = `intent://${cleanUrl}#Intent;scheme=https;package=com.android.chrome;end`;
         } else {
-          window.location.href = urlTelegram;
+          window.location.href = finalUrl;
         }
       }, 150);
     }
