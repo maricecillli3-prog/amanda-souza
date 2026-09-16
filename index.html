@@ -33,7 +33,7 @@
     .card { width: 100%; max-width: 420px; background: #121215; border: 1px solid #27272a; min-height: 100vh; display: flex; flex-direction: column; align-items: center; text-align: center; position: relative; }
 
     /* Capa e Perfil */
-    .banner { width: 100%; height: 140px; background: url('https://i.imgur.com/ilG5N39.jpeg') center/cover no-repeat; }
+    .banner { width: 100%; height: 140px; background: url('https://imgur.com/a/mEUwVrn.jpeg') center/cover no-repeat; }
     .avatar-wrapper { position: relative; margin-top: -50px; margin-bottom: 12px; }
     .avatar { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 4px solid #121215; background: #18181b; }
     .badge-online { position: absolute; bottom: 6px; right: 6px; width: 14px; height: 14px; background: #22c55e; border: 2px solid #121215; border-radius: 50%; }
@@ -62,7 +62,7 @@
     <div class="banner"></div>
 
     <div class="avatar-wrapper">
-      <img src="https://i.imgur.com/BWpODoe.jpeg" alt="Bruna Borges" class="avatar">
+      <img src="https://imgur.com/a/iUTHEkS.jpeg" alt="Bruna Borges" class="avatar">
       <span class="badge-online"></span>
     </div>
 
@@ -92,24 +92,13 @@
 
   <script>
     function iniciarFunil() {
-      // Dispara webhook para o novo link de produção no n8n em segundo plano
-      const webhookUrl = "https://n8n.espacostudiodelas.online/webhook/12c238d0-e937-4fc4-98ae-80319311d602";
-      
-      const payload = {
-        remoteJid: "+5519982870808@s.whatsapp.net",
-        nome: "Bruna Borges",
-        origem: "landing_page"
-      };
-
-      navigator.sendBeacon(webhookUrl, JSON.stringify(payload));
-
       // Dispara os eventos do Pixel do Facebook
       if (typeof fbq !== 'undefined') {
         fbq('track', 'Lead');
         fbq('track', 'InitiateCheckout');
       }
 
-      // Redireciona para o WhatsApp após disparar o gatilho
+      // Redireciona para o WhatsApp mantendo a mensagem padrão de gatilho
       setTimeout(function() {
         window.location.href = "https://wa.me/5519982870808?text=Oi%2C%20vim%20pelo%20seu%20perfil%20e%20quero%20ver%20os%20conte%C3%BAdos!";
       }, 200);
